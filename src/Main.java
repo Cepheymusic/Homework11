@@ -6,7 +6,7 @@ public class Main {
         task2();
         task3();
     }
-    public static void checkingTheYear(int year) {
+    public static void checkTheYear(int year) {
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " год — високосный год");
         } else {
@@ -17,9 +17,9 @@ public class Main {
     public static void task1() {
         System.out.println("Задача1");
         int year = 2026;
-        checkingTheYear(year);
+        checkTheYear(year);
     }
-    public static void installingTheApp(int clientOS, int clientDeviceYear) {
+    public static void installTheApp(int clientOS, int clientDeviceYear) {
         int iOs = 0;
         int android = 1;
         int checkYear = 2015;
@@ -39,25 +39,26 @@ public class Main {
         System.out.println("Задача2");
         int clientOS = 1;
         int clientDeviceYear = LocalDate.now().getYear();
-        installingTheApp(clientOS, clientDeviceYear);
+        installTheApp(clientOS, clientDeviceYear);
     }
-    public static int shippingTime(int deliveryDistance) {
-        byte numberOfDays = 1;
+    public static int shipTime(int deliveryDistance) {
+        byte numberOfDays;
 
         if (deliveryDistance < 20) {
-            System.out.println("Потребуется дней: " + numberOfDays);
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            System.out.println("Потребуется дней: " + (numberOfDays + 1));
-        } else if (deliveryDistance >= 60 && deliveryDistance <= 100) {
-            System.out.println("Потребуется дней: " + (numberOfDays + 2));
+            numberOfDays = 1;
+        } else if (deliveryDistance < 60) {
+            numberOfDays = 2;
+        } else if (deliveryDistance <= 100) {
+            numberOfDays = 3;
         } else {
-            System.out.println("Доставки нет");
+            numberOfDays = -1;
         }
         return numberOfDays;
     }
     public static void task3() {
         System.out.println("Задача3");
-        byte deliveryDistance = 59;
-        shippingTime(deliveryDistance);
+        byte deliveryDistance = 101;
+        shipTime(deliveryDistance);
+        System.out.println("Потребуется дней: " + shipTime(deliveryDistance));
     }
 }
